@@ -15,3 +15,13 @@ enum CreaturesType: Int {
     case spirit = 2
     case monster = 3
 }
+
+enum CreatureType: Int {
+    case trean = 0
+    case tromblon = 1
+    case troll = 2
+    case babyDragon = 3
+    case sorcier = 4
+    case helicopter = 5
+    case griffon = 6
+}

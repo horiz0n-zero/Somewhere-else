@@ -21,13 +21,13 @@ struct CreatureProperties {
         self.folder = folder
         self.level = level
         self.tex = tex
-        /*if self.level == 1 {
+        if self.level == 1 {
             self.textures = [[[[SKTexture]]]]()
             self.textures.append(creatureData.loadCreature(properties: &self))
         }
         else {
             self.textures = creatureData.loadCreatureWithLevel(properties: &self)
-        }*/
+        }
     }
     
 }
@@ -35,13 +35,13 @@ struct CreatureProperties {
 struct creatureData {
     
     let properties: [CreatureProperties] = [
-        CreatureProperties(name: "trean", folder: "trean", level: 2, tex: [1,7,5]),
-        CreatureProperties(name: "tromblon", folder: "tromblon", level: 2, tex: [1, 5, 5]),
-        CreatureProperties(name: "troll", folder: "troll", level: 2, tex: [1, 5, 5]),
-        CreatureProperties(name: "bebe dragon", folder: "babydragon", level: 2, tex: [5, 5, 5]),
-        CreatureProperties(name: "sorcier", folder: "wizard", level: 2, tex: [1, 5, 5]),
+        CreatureProperties(name: "trean", folder: "treedemon", level: 2, tex: [0,7,5]),
+        CreatureProperties(name: "tromblon", folder: "mad", level: 2, tex: [0, 5, 5]),
+        CreatureProperties(name: "troll", folder: "manh", level: 2, tex: [0, 5, 5]),
+        CreatureProperties(name: "bebe dragon", folder: "fairydragon", level: 2, tex: [5, 5, 5]),
+        CreatureProperties(name: "sorcier", folder: "fashi", level: 2, tex: [0, 5, 5]),
         CreatureProperties(name: "helicopter", folder: "helicopter", level: 2, tex: [5, 5, 5]),
-        CreatureProperties(name: "griffon", folder: "griffon", level: 2, tex: [5, 7, 6])
+        CreatureProperties(name: "griffon", folder: "griffin", level: 2, tex: [5, 7, 6])
     ]
     
     static func loadCreatureWithLevel(properties: inout CreatureProperties) -> [[[[SKTexture]]]] {
@@ -51,7 +51,6 @@ struct creatureData {
         
         for i in 0...properties.level {
             properties.folder = folder + "_\(i)"
-            print("load folder", properties.folder)
             r.append(creatureData.loadCreature(properties: &properties))
         }
         properties.folder = folder

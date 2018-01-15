@@ -16,8 +16,6 @@ class GameViewController: UIViewController {
         
         var data = SceneData()
         data.controller = self
-        data.player = PlayerData(data: data)
-        
         
         let view = self.view as! SKView
         let scene = Scene(size: view.frame.size, data: data)

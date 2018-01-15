@@ -11,6 +11,7 @@
 		8827A454200CF9F7008C7B3E /* petdevil_0 in Resources */ = {isa = PBXBuildFile; fileRef = 8827A451200CF9F7008C7B3E /* petdevil_0 */; };
 		8827A455200CF9F7008C7B3E /* petdragon_0 in Resources */ = {isa = PBXBuildFile; fileRef = 8827A452200CF9F7008C7B3E /* petdragon_0 */; };
 		8827A456200CF9F7008C7B3E /* petfish_0 in Resources */ = {isa = PBXBuildFile; fileRef = 8827A453200CF9F7008C7B3E /* petfish_0 */; };
+		8827A458200D029A008C7B3E /* PlayerResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A457200D029A008C7B3E /* PlayerResource.swift */; };
 		8865CE9B200CADE200B950A8 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9A200CADE200B950A8 /* BuildingNode.swift */; };
 		8865CE9D200CADEE00B950A8 /* BuildingProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */; };
 		8865CE9F200CAE5400B950A8 /* buildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9E200CAE5400B950A8 /* buildingData.swift */; };
@@ -74,6 +75,7 @@
 		8827A451200CF9F7008C7B3E /* petdevil_0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = petdevil_0; sourceTree = "<group>"; };
 		8827A452200CF9F7008C7B3E /* petdragon_0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = petdragon_0; sourceTree = "<group>"; };
 		8827A453200CF9F7008C7B3E /* petfish_0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = petfish_0; sourceTree = "<group>"; };
+		8827A457200D029A008C7B3E /* PlayerResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerResource.swift; sourceTree = "<group>"; };
 		8865CE9A200CADE200B950A8 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingProperties.swift; sourceTree = "<group>"; };
 		8865CE9E200CAE5400B950A8 /* buildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildingData.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				88939191200BC09700663CF5 /* Player.swift */,
 				88939193200BC0A500663CF5 /* PlayerData.swift */,
+				8827A457200D029A008C7B3E /* PlayerResource.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				88DD252F200B799C0081BA1B /* AppDelegate.swift in Sources */,
 				88939194200BC0A500663CF5 /* PlayerData.swift in Sources */,
 				88FBECA0200CD07F000EC9F0 /* creatureData.swift in Sources */,
+				8827A458200D029A008C7B3E /* PlayerResource.swift in Sources */,
 				88DD254F200B9DB10081BA1B /* Map.swift in Sources */,
 				8865CEAD200CBC2800B950A8 /* Monster.swift in Sources */,
 				8865CEA4200CB2C500B950A8 /* BuildingAction.swift in Sources */,

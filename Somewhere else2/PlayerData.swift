@@ -11,15 +11,12 @@ import SpriteKit
 
 struct PlayerData {
     
-    init(data: SceneData) {
-        let dataBase = data.documents.appending("/player.player_data")
-        if FileManager.default.fileExists(atPath: dataBase) == false {
-            FileManager.default.createFile(atPath: dataBase, contents: nil, attributes: nil)
-            
-            return
-        }
-        
+    var resource: PlayerResource
+    
+    init(resource: PlayerResource) {
+        self.resource = resource
     }
+    
 }
 
 extension PlayerData {
@@ -27,12 +24,20 @@ extension PlayerData {
         guard let file = FileHandle(forWritingAtPath: path) else {
             fatalError()
         }
-        
+        let resourceData = Data.init(bytesNoCopy: &player.resource, count: MemoryLayout<PlayerResource>.size, deallocator: .none)
+        file.write(resourceData)
     }
 }
 
 extension PlayerData {
-    static func readFromFile(path: String) -> PlayerData? {
-        return nil
+    static func readFromFile(path: String) -> PlayerData {
+        let fd = open(path, O_RDONLY)
+        var resource = PlayerResource.defaultResource
+        
+        if fd == -1 {
+            fatalError()
+        }
+        read(fd, &resource, MemoryLayout<PlayerResource>.size)
+        return PlayerData(resource: resource)
     }
 }

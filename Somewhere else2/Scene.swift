@@ -24,6 +24,13 @@ class Scene: SKScene {
         case .Explore:
             self.drawMapExplore()
         }
+        let sprite = CreatureNode(type: .trean, data: self.data)
+        sprite.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        sprite.zPosition = self.map.header.startZposition + 1
+        print(sprite.creatureType, sprite.rarity, sprite.type)
+        print(self.data.player)
+        self.addChild(sprite)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
