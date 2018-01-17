@@ -11,9 +11,11 @@ import SpriteKit
 
 class SpiritNode: SKSpriteNode, Creature, Spirit {
     var type: CreaturesType
+    var stat: CreaturesBaseStat
     
-    init() {
+    init(type: SpiritType, data: SceneData) {
         self.type = .spirit
+        self.stat = CreaturesBaseStat(forSpirit: type)
         super.init(texture: nil, color: UIColor.clear, size: CGSize.zero)
     }
     

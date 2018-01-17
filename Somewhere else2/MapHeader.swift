@@ -18,6 +18,7 @@ struct MapHeader {
     let row_size: Int
     var settings: MapCASettings
     var events: MapCAEvents
+    var object_count: Int = 0
     let type: MapDrawType
     let startZposition: CGFloat
     

@@ -11,6 +11,7 @@ import SpriteKit
 
 class MapTile: SKSpriteNode {
     let properties: MapTileProperties
+    var building: BuildingNode? = nil
     var center: CGPoint!
     
     init(data: SceneData, properties: MapTileProperties) {

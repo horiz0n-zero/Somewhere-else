@@ -12,9 +12,10 @@ import SpriteKit
 class HeroNode: SKSpriteNode, Creature, Hero {
     
     var type: CreaturesType
-    
-    init() {
+    var stat: CreaturesBaseStat
+    init(type: HeroType, ofRarity: Int, data: SceneData) {
         self.type = .hero
+        self.stat = CreaturesBaseStat.init(forHero: type, ofRarity: ofRarity)
         super.init(texture: nil, color: UIColor.clear, size: CGSize.zero)
     }
     

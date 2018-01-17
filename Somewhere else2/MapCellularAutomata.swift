@@ -12,7 +12,41 @@ import SpriteKit
 extension Map {
     
     mutating func applyCellularAutomataEvents() {
+     let size = self.header.size - 2
+        var table: [(x: Int, y: Int, priority: Int, pos: Int)] = Array(repeating: (0, 0, 0, 0), count: self.header.size * self.header.size)
+        var index: Int = 0
         
+        for y in 1...size {
+            for x in 1...size {
+                if self.grid[y][x].live == 1 {
+                    table[index].x = x
+                    table[index].y = y
+                    table[index].priority = self.grid[y + 1][x + 1].live + self.grid[y + 1][x].live + self.grid[y + 1][x - 1].live +
+                        self.grid[y][x + 1].live + self.grid[y][x].live + self.grid[y][x - 1].live +
+                        self.grid[y - 1][x + 1].live + self.grid[y - 1][x].live + self.grid[y - 1][x - 1].live
+                    table[index].pos = self.grid[y + 1][x + 1].type + self.grid[y + 1][x].type + self.grid[y + 1][x - 1].type +
+                        self.grid[y][x + 1].type + self.grid[y][x].type + self.grid[y][x - 1].type +
+                        self.grid[y - 1][x + 1].type + self.grid[y - 1][x].type + self.grid[y - 1][x - 1].type
+                    index += 1
+                }
+            }
+        }
+        if index < self.header.events.requiredTotal {
+            print(index, self.header.events.requiredTotal)
+            return
+        }
+        func sortTable(a: (x: Int, y: Int, priority: Int, pos: Int), b: (x: Int, y: Int, priority: Int, pos: Int)) -> Bool {
+            return a.priority > b.priority || a.pos < b.pos
+        }
+        table.sort(by: sortTable)
+        if self.header.events.requiredBuildings != 0 && self.buildings != nil {
+            for i in 0...self.header.events.requiredBuildings - 1 {
+                let build = BuildingSave(type: BuildingType.totem, rarity: Rarities.common, x: table[i].x, y: table[i].y)
+                
+                self.buildings!.append(build)
+                self.grid[table[i].y][table[i].x].building = build
+            }
+        }
     }
     
 }
@@ -36,7 +70,6 @@ extension Map {
                     }
                 }
             }
-            self.printMap()
         }
         
         if settings.useRandomTypeStart {
@@ -47,7 +80,6 @@ extension Map {
                     }
                 }
             }
-            self.printMap()
         }
         
         func gridTurn(x: Int, y: Int, grid: inout [[MapTileProperties]]) {
@@ -79,7 +111,6 @@ extension Map {
                     }
                 }
                 self.grid = grid
-                self.printMap()
             }
         }
     }
@@ -119,13 +150,27 @@ extension Map {
         for y in 1...self.header.size - 2 {
             for x in 1...self.header.size - 2 {
                 if self.grid[y][x].live == 1 {
+                    var letter = "*"
+                    if let build = self.grid[y][x].building {
+                        switch build.type {
+                        case .chest:
+                            letter = "C"
+                        case .totem:
+                            letter = "T"
+                        default:
+                            break
+                        }
+                    }
                     
+                    print(letter, separator: "", terminator: " ")
                 }
                 else {
                     print(" ", separator: "", terminator: " ")
                 }
             }
+            print()
         }
+        print()
     }
 }
 

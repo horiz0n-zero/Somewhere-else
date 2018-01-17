@@ -27,8 +27,17 @@ extension Scene {
                 
                     tile.position = CGPoint(x: xposition, y: yposition)
                     tile.center = CGPoint(x: xposition, y: yposition + self.data.ile.disize.height)
+                    tile.name = "\(x * 10 + y)"
                     z = -CGFloat(x - y)
                     tile.zPosition = z
+                    
+                    if let build = self.map.grid[y][x].building {
+                        let buildNode = BuildingNode(fromSave: build, data: self.data)
+                        tile.building = buildNode
+                        tile.addChild(buildNode)
+                        buildNode.zPosition = 1
+                    }
+                    
                     self.addChild(tile)
                 }
                 xposition += self.data.ile.disize.width

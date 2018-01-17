@@ -19,18 +19,26 @@ class Scene: SKScene {
     init(size: CGSize, data: SceneData) {
         self.data = data
         super.init(size: size)
-        self.map = self.data.loadMap(named: "/home.map")
-        switch self.map.header.type {
-        case .Explore:
-            self.drawMapExplore()
-        }
-        let sprite = CreatureNode(type: .trean, data: self.data)
-        sprite.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        sprite.zPosition = self.map.header.startZposition + 1
-        print(sprite.creatureType, sprite.rarity, sprite.type)
-        print(self.data.player)
-        self.addChild(sprite)
+        self.backgroundColor = UIColor.black
+        self.player = Player(texture: nil, color: UIColor.red, size: CGSize.init(width: 25, height: 25))
+        self.player.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        self.addChild(self.player)
+        let cam = SKCameraNode()
         
+        self.camera = cam
+        self.addChild(cam)
+        self.player.zPosition = 100
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        self.camera?.position = self.player.position
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let t = touches.first else {
+            return
+        }
+        self.player.position = t.location(in: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

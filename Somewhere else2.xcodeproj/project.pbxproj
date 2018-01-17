@@ -12,6 +12,11 @@
 		8827A455200CF9F7008C7B3E /* petdragon_0 in Resources */ = {isa = PBXBuildFile; fileRef = 8827A452200CF9F7008C7B3E /* petdragon_0 */; };
 		8827A456200CF9F7008C7B3E /* petfish_0 in Resources */ = {isa = PBXBuildFile; fileRef = 8827A453200CF9F7008C7B3E /* petfish_0 */; };
 		8827A458200D029A008C7B3E /* PlayerResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A457200D029A008C7B3E /* PlayerResource.swift */; };
+		8827A45E200D2B69008C7B3E /* ObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A45D200D2B69008C7B3E /* ObjectNode.swift */; };
+		8827A460200D2BE8008C7B3E /* Item__MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A45F200D2BE8008C7B3E /* Item__MapItem.swift */; };
+		8827A462200D2C5E008C7B3E /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8827A461200D2C5E008C7B3E /* Items.xcassets */; };
+		8827A464200D2E37008C7B3E /* itemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A463200D2E37008C7B3E /* itemsData.swift */; };
+		8827A468200DE83E008C7B3E /* Herculanum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8827A467200DE83E008C7B3E /* Herculanum.ttf */; };
 		8865CE9B200CADE200B950A8 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9A200CADE200B950A8 /* BuildingNode.swift */; };
 		8865CE9D200CADEE00B950A8 /* BuildingProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */; };
 		8865CE9F200CAE5400B950A8 /* buildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9E200CAE5400B950A8 /* buildingData.swift */; };
@@ -76,6 +81,11 @@
 		8827A452200CF9F7008C7B3E /* petdragon_0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = petdragon_0; sourceTree = "<group>"; };
 		8827A453200CF9F7008C7B3E /* petfish_0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = petfish_0; sourceTree = "<group>"; };
 		8827A457200D029A008C7B3E /* PlayerResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerResource.swift; sourceTree = "<group>"; };
+		8827A45D200D2B69008C7B3E /* ObjectNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectNode.swift; sourceTree = "<group>"; };
+		8827A45F200D2BE8008C7B3E /* Item__MapItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item__MapItem.swift; sourceTree = "<group>"; };
+		8827A461200D2C5E008C7B3E /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
+		8827A463200D2E37008C7B3E /* itemsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemsData.swift; sourceTree = "<group>"; };
+		8827A467200DE83E008C7B3E /* Herculanum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Herculanum.ttf; sourceTree = "<group>"; };
 		8865CE9A200CADE200B950A8 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingProperties.swift; sourceTree = "<group>"; };
 		8865CE9E200CAE5400B950A8 /* buildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildingData.swift; sourceTree = "<group>"; };
@@ -147,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8827A45C200D2B51008C7B3E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				8827A45D200D2B69008C7B3E /* ObjectNode.swift */,
+				8827A45F200D2BE8008C7B3E /* Item__MapItem.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		8865CE99200CADD200B950A8 /* Building */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +291,7 @@
 				8865CEA0200CAEAB00B950A8 /* Probabilities */,
 				8865CE99200CADD200B950A8 /* Building */,
 				88939190200BC08600663CF5 /* Player */,
+				8827A45C200D2B51008C7B3E /* Objects */,
 				88DD254D200B9DA10081BA1B /* Map */,
 				88DD255E200BAEE10081BA1B /* Data */,
 				88DD252E200B799C0081BA1B /* AppDelegate.swift */,
@@ -281,6 +301,7 @@
 				88DD2536200B799C0081BA1B /* GameViewController.swift */,
 				88DD2538200B799C0081BA1B /* Main.storyboard */,
 				88DD253B200B799C0081BA1B /* Assets.xcassets */,
+				8827A467200DE83E008C7B3E /* Herculanum.ttf */,
 				88DD253D200B799C0081BA1B /* LaunchScreen.storyboard */,
 				88DD2540200B799C0081BA1B /* Info.plist */,
 			);
@@ -312,6 +333,8 @@
 		88DD255E200BAEE10081BA1B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8827A463200D2E37008C7B3E /* itemsData.swift */,
+				8827A461200D2C5E008C7B3E /* Items.xcassets */,
 				88DD2547200B99B10081BA1B /* env.xcassets */,
 				88DD255F200BAEFB0081BA1B /* ileData.swift */,
 				8865CE9E200CAE5400B950A8 /* buildingData.swift */,
@@ -392,6 +415,7 @@
 				88FBECD5200CF532000EC9F0 /* konglong_1 in Resources */,
 				88FBECBF200CF4F2000EC9F0 /* fashi_0 in Resources */,
 				88FBECC6200CF4F2000EC9F0 /* helicopter_1 in Resources */,
+				8827A462200D2C5E008C7B3E /* Items.xcassets in Resources */,
 				8827A455200CF9F7008C7B3E /* petdragon_0 in Resources */,
 				88FBECD6200CF532000EC9F0 /* konglong_2 in Resources */,
 				88FBECA4200CF48E000EC9F0 /* boss_0 in Resources */,
@@ -409,6 +433,7 @@
 				88DD253C200B799C0081BA1B /* Assets.xcassets in Resources */,
 				88FBECC8200CF4F2000EC9F0 /* mad_0 in Resources */,
 				88DD253F200B799C0081BA1B /* LaunchScreen.storyboard in Resources */,
+				8827A468200DE83E008C7B3E /* Herculanum.ttf in Resources */,
 				88FBECA6200CF48E000EC9F0 /* qiuzhang_2 in Resources */,
 				88FBECD4200CF532000EC9F0 /* konglong_0 in Resources */,
 				88FBECC5200CF4F2000EC9F0 /* helicopter_0 in Resources */,
@@ -440,7 +465,9 @@
 				88DD2537200B799C0081BA1B /* GameViewController.swift in Sources */,
 				88DD252F200B799C0081BA1B /* AppDelegate.swift in Sources */,
 				88939194200BC0A500663CF5 /* PlayerData.swift in Sources */,
+				8827A45E200D2B69008C7B3E /* ObjectNode.swift in Sources */,
 				88FBECA0200CD07F000EC9F0 /* creatureData.swift in Sources */,
+				8827A464200D2E37008C7B3E /* itemsData.swift in Sources */,
 				8827A458200D029A008C7B3E /* PlayerResource.swift in Sources */,
 				88DD254F200B9DB10081BA1B /* Map.swift in Sources */,
 				8865CEAD200CBC2800B950A8 /* Monster.swift in Sources */,
@@ -451,6 +478,7 @@
 				88DD254C200B9C920081BA1B /* SceneData.swift in Sources */,
 				88DD2551200B9E270081BA1B /* MapHeader.swift in Sources */,
 				88DD255D200BA6250081BA1B /* MapTileProperties.swift in Sources */,
+				8827A460200D2BE8008C7B3E /* Item__MapItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,9 +11,11 @@ import SpriteKit
 
 class MonsterNode: SKSpriteNode, Creature, Monster {
     var type: CreaturesType
+    var stat: CreaturesBaseStat
     
-    init() {
+    init(type: MonsterType) {
         self.type = .monster
+        self.stat = CreaturesBaseStat(forMonster: type, ofRarity: 0)
         super.init(texture: nil, color: UIColor.clear, size: CGSize.zero)
     }
     

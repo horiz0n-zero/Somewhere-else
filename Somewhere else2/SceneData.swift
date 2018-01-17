@@ -42,23 +42,4 @@ struct SceneData {
         }
     }
     
-    mutating func loadMap(named: String) -> Map {
-        
-        self.current_map = self.documents_maps.appending(named)
-        
-        if FileManager.default.fileExists(atPath: self.current_map) == false {
-            FileManager.default.createFile(atPath: self.current_map, contents: nil, attributes: nil)
-            var map = Map(size: 100, settings: MapCASettings.zero, events: MapCAEvents())
-            Map.WriteToFile(path: self.current_map, map: &map)
-            return map
-        }
-        let setts = MapCASettings(useRandomLiveStart: true, useRandomTypeStart: true, useTurn: true, liveRange: 2, typeRange: 6,
-                                  turns: 1, turnSurviveValue: 4)
-        var map = Map(size: 50, settings: setts, events: MapCAEvents())
-        map.applyCellularAutomata()
-        
-        Map.WriteToFile(path: self.current_map, map: &map)
-        return map
-    }
-    
 }

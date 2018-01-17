@@ -12,5 +12,7 @@ import SpriteKit
 struct MapTileProperties {
     var live: Int
     var type: Int
-    static let zero = MapTileProperties.init(live: 0, type: 0)
+    var building: BuildingSave?
+    
+    static let zero = MapTileProperties.init(live: 0, type: 0, building: nil)
 }

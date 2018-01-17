@@ -31,3 +31,12 @@ protocol BuildingProperties {
     var details: BuildingDetails { get }
     var rarity: Rarities { get }
 }
+
+struct BuildingSave {
+    var type: BuildingType
+    var rarity: Rarities
+    var x: Int
+    var y: Int
+    
+    static let zero = BuildingSave(type: .totem, rarity: .common, x: 0, y: 0)
+}

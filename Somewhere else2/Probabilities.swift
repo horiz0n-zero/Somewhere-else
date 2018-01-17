@@ -19,6 +19,20 @@ enum Rarities: Int {
 
 struct Probabilities {
     
+    static func get1() -> Rarities {
+        return .common
+    }
+    
+    static func get2() -> Rarities {
+        let r = arc4random_uniform(100)
+        switch r {
+        case 0...70:
+            return .common
+        default:
+            return .rare
+        }
+    }
+    
     static func get3() -> Rarities {
         let r = arc4random_uniform(100)
         switch r {

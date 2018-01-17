@@ -11,6 +11,7 @@ import SpriteKit
 
 class CreatureNode: SKSpriteNode, Creature {
     var type: CreaturesType
+    var stat: CreaturesBaseStat
     // protocol <--
     var creatureType: CreatureType
     let textures: [[[SKTexture]]]
@@ -21,10 +22,9 @@ class CreatureNode: SKSpriteNode, Creature {
         self.creatureType = type
         self.rarity = Probabilities.get3()
         self.textures = data.creature.properties[self.creatureType.rawValue].textures[self.rarity.rawValue]
+        self.stat = CreaturesBaseStat(forCreature: type, ofRarity: self.rarity.rawValue)
         super.init(texture: self.textures.first!.first!.first!,
                    color: UIColor.clear, size: self.textures.first!.first!.first!.size())
-        self.run(SKAction.repeatForever(SKAction.animate(with: self.textures[2][0],
-                                                         timePerFrame: 0.1, resize: true, restore: false)))
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError()
@@ -34,5 +34,6 @@ class CreatureNode: SKSpriteNode, Creature {
 
 protocol Creature {
     var type: CreaturesType { get }
+    var stat: CreaturesBaseStat { get set }
 }
 

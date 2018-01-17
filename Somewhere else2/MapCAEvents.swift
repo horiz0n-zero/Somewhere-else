@@ -10,9 +10,17 @@ import Foundation
 import SpriteKit
 
 struct MapCAEvents {
-    let pad: Int = 0
+    var requiredBuildings: Int
+    var requiredLinks: Int
+    var requiredItems: Int
+    let requiredTotal: Int
     
-    init() {
-        
+    init(buildings: Int, links: Int, items: Int) {
+        self.requiredBuildings = buildings
+        self.requiredLinks = links
+        self.requiredItems = items
+        self.requiredTotal = buildings + links + items
     }
+    
+    static let zero = MapCAEvents(buildings: 0, links: 0, items: 0)
 }
