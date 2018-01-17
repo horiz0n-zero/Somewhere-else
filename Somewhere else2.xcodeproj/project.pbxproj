@@ -17,6 +17,7 @@
 		8827A462200D2C5E008C7B3E /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8827A461200D2C5E008C7B3E /* Items.xcassets */; };
 		8827A464200D2E37008C7B3E /* itemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A463200D2E37008C7B3E /* itemsData.swift */; };
 		8827A468200DE83E008C7B3E /* Herculanum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8827A467200DE83E008C7B3E /* Herculanum.ttf */; };
+		8827A46E200F8D91008C7B3E /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A46D200F8D91008C7B3E /* Utility.swift */; };
 		8865CE9B200CADE200B950A8 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9A200CADE200B950A8 /* BuildingNode.swift */; };
 		8865CE9D200CADEE00B950A8 /* BuildingProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */; };
 		8865CE9F200CAE5400B950A8 /* buildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9E200CAE5400B950A8 /* buildingData.swift */; };
@@ -86,6 +87,7 @@
 		8827A461200D2C5E008C7B3E /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		8827A463200D2E37008C7B3E /* itemsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemsData.swift; sourceTree = "<group>"; };
 		8827A467200DE83E008C7B3E /* Herculanum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Herculanum.ttf; sourceTree = "<group>"; };
+		8827A46D200F8D91008C7B3E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		8865CE9A200CADE200B950A8 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingProperties.swift; sourceTree = "<group>"; };
 		8865CE9E200CAE5400B950A8 /* buildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildingData.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 				8827A45F200D2BE8008C7B3E /* Item__MapItem.swift */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		8827A46C200F8D87008C7B3E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8827A46D200F8D91008C7B3E /* Utility.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		8865CE99200CADD200B950A8 /* Building */ = {
@@ -287,6 +297,7 @@
 		88DD252D200B799C0081BA1B /* Somewhere else2 */ = {
 			isa = PBXGroup;
 			children = (
+				8827A46C200F8D87008C7B3E /* Utility */,
 				8865CEA5200CBC0800B950A8 /* Creatures */,
 				8865CEA0200CAEAB00B950A8 /* Probabilities */,
 				8865CE99200CADD200B950A8 /* Building */,
@@ -475,6 +486,7 @@
 				88DD2558200B9F660081BA1B /* MapCAEvents.swift in Sources */,
 				8865CEA9200CBC1B00B950A8 /* Hero.swift in Sources */,
 				8865CEA7200CBC1500B950A8 /* Creature.swift in Sources */,
+				8827A46E200F8D91008C7B3E /* Utility.swift in Sources */,
 				88DD254C200B9C920081BA1B /* SceneData.swift in Sources */,
 				88DD2551200B9E270081BA1B /* MapHeader.swift in Sources */,
 				88DD255D200BA6250081BA1B /* MapTileProperties.swift in Sources */,

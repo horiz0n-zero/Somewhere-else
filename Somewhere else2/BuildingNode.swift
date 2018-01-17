@@ -16,18 +16,22 @@ class BuildingNode: SKSpriteNode, BuildingProperties {
     var rarity: Rarities
     // <--
     static let BuildingsDetails = [
-        BuildingDetails.init(index: 0, raritiesGet: Probabilities.get3),
-        BuildingDetails.init(index: 1, raritiesGet: Probabilities.get3)
+        BuildingDetails.init(index: 0, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.9, 0.9, 0.7]),
+        BuildingDetails.init(index: 1, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.6, 0.6, 0.6])
     ]
+    
+    fileprivate func commonInit() {
+        self.position.y += self.details.yplus[self.rarity.rawValue]
+        self.setScale(self.details.scale[self.rarity.rawValue])
+    }
     
     init(type: BuildingType, data: SceneData) {
         self.type = type
         self.details = BuildingNode.BuildingsDetails[self.type.rawValue]
-        self.rarity = self.details.raritiesGet()
-        
+        self.rarity = self.details.raritiesGet()        
         super.init(texture: data.building.texture[self.type.rawValue][self.rarity.rawValue],
             color: UIColor.clear, size: data.building.texture[self.type.rawValue][self.rarity.rawValue].size())
-        // todo increment decrement y position
+        self.commonInit()
     }
     
     init(fromSave save: BuildingSave, data: SceneData) {
@@ -36,7 +40,7 @@ class BuildingNode: SKSpriteNode, BuildingProperties {
         self.rarity = save.rarity
         super.init(texture: data.building.texture[self.type.rawValue][self.rarity.rawValue], color: UIColor.clear,
                    size: data.building.texture[self.type.rawValue][self.rarity.rawValue].size())
-        // call a common func
+        self.commonInit()
     }
     
     

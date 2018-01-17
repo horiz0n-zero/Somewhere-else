@@ -41,7 +41,9 @@ extension Map {
         table.sort(by: sortTable)
         if self.header.events.requiredBuildings != 0 && self.buildings != nil {
             for i in 0...self.header.events.requiredBuildings - 1 {
-                let build = BuildingSave(type: BuildingType.totem, rarity: Rarities.common, x: table[i].x, y: table[i].y)
+                let type = BuildingType(rawValue: Int(arc4random_uniform(2)))!
+                let build = BuildingSave(type: type, rarity: Rarities(rawValue: Int(arc4random_uniform(3)))!,
+                                        x: table[i].x, y: table[i].y)
                 
                 self.buildings!.append(build)
                 self.grid[table[i].y][table[i].x].building = build

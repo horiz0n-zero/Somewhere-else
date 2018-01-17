@@ -12,10 +12,14 @@ import SpriteKit
 struct BuildingDetails {
     let index: Int
     let raritiesGet: (() -> (Rarities))
+    let yplus: [CGFloat]
+    let scale: [CGFloat]
     
-    init(index: Int, raritiesGet: @escaping (() -> (Rarities))) {
+    init(index: Int, raritiesGet: @escaping (() -> (Rarities)), yplus: [CGFloat], scale: [CGFloat]) {
         self.index = index
         self.raritiesGet = raritiesGet
+        self.yplus = yplus
+        self.scale = scale
     }
     
 }

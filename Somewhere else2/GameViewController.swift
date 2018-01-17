@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
         self.data.controller = self
         let debugSettings = MapCASettings(useRandomLiveStart: true, useRandomTypeStart: true, useTurn: true,
                                           liveRange: 2, typeRange: 5, turns: 2, turnSurviveValue: 4)
-        let debugEvents = MapCAEvents(buildings: 20, links: 0, items: 0)
+        let debugEvents = MapCAEvents(buildings: 25, links: 0, items: 0)
         var map = Map(size: 50, settings: debugSettings, events: debugEvents)
         map.applyCellularAutomata()
         map.applyCellularAutomataEvents()
