@@ -21,10 +21,10 @@ class Scene: SKScene {
         super.init(size: size)
         self.backgroundColor = UIColor.black
         self.player = Player(texture: nil, color: UIColor.red, size: CGSize.init(width: 25, height: 25))
-        self.player.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        self.player.position = self.data.player.map.currentPosition
+        
         self.addChild(self.player)
         let cam = SKCameraNode()
-        
         self.camera = cam
         self.addChild(cam)
         self.player.zPosition = 100
@@ -39,10 +39,10 @@ class Scene: SKScene {
             return
         }
         self.player.position = t.location(in: self)
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-    
 }

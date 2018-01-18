@@ -17,7 +17,6 @@ struct SceneData {
     let documents: String!
     let documents_maps: String!
     let documents_player_resource: String!
-    var current_map: String!
     var player: PlayerData!
     
     init() {
@@ -38,7 +37,10 @@ struct SceneData {
             return
         }
         else {
-            self.player = PlayerData.readFromFile(path: self.documents_player_resource)
+            var playerD = PlayerData(resource: PlayerResource.defaultResource)
+            PlayerData.writeToFile(path: self.documents_player_resource, player: &playerD)
+            self.player = playerD
+            //self.player = PlayerData.readFromFile(path: self.documents_player_resource)
         }
     }
     

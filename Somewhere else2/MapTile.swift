@@ -23,4 +23,14 @@ class MapTile: SKSpriteNode {
         fatalError()
     }
     
+    func transformTo(mapLink link: MapLink, data: SceneData) {
+        switch link.context {
+        case .exploring, .explored:
+            self.texture = data.ile.textures[6]
+            self.position.y += data.ile.disize.height / 2
+        default:
+            break
+        }
+    }
+    
 }

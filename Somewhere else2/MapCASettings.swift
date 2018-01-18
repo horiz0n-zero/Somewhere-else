@@ -23,4 +23,10 @@ struct MapCASettings {
     
     static let zero = MapCASettings(useRandomLiveStart: false, useRandomTypeStart: false,
                                     useTurn: false, liveRange: 0, typeRange: 0, turns: 0, turnSurviveValue: 0)
+    static func randomSettings() -> MapCASettings {
+        
+        return MapCASettings(useRandomLiveStart: true, useRandomTypeStart: true, useTurn: true,
+                             liveRange: arc4random_uniform(5), typeRange: arc4random_uniform(5),
+                             turns: Int(arc4random_uniform(5)), turnSurviveValue: arc4random_uniform(6))
+    }
 }

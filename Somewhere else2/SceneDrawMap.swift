@@ -30,14 +30,15 @@ extension Scene {
                     tile.name = "\(x * 10 + y)"
                     z = -CGFloat(x - y)
                     tile.zPosition = z
-                    
                     if let build = self.map.grid[y][x].building {
                         let buildNode = BuildingNode(fromSave: build, data: self.data)
                         tile.building = buildNode
                         tile.addChild(buildNode)
                         buildNode.zPosition = 1
                     }
-                    
+                    if let link = self.map.grid[y][x].link {
+                        tile.transformTo(mapLink: link, data: self.data)
+                    }
                     self.addChild(tile)
                 }
                 xposition += self.data.ile.disize.width

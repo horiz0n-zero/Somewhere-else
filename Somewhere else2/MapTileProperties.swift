@@ -13,6 +13,7 @@ struct MapTileProperties {
     var live: Int
     var type: Int
     var building: BuildingSave?
+    var link: MapLink?
     
-    static let zero = MapTileProperties.init(live: 0, type: 0, building: nil)
+    static let zero = MapTileProperties.init(live: 0, type: 0, building: nil, link: nil)
 }

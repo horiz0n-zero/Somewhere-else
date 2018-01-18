@@ -18,6 +18,9 @@
 		8827A464200D2E37008C7B3E /* itemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A463200D2E37008C7B3E /* itemsData.swift */; };
 		8827A468200DE83E008C7B3E /* Herculanum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8827A467200DE83E008C7B3E /* Herculanum.ttf */; };
 		8827A46E200F8D91008C7B3E /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A46D200F8D91008C7B3E /* Utility.swift */; };
+		8827A471200FB8DC008C7B3E /* MapLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A470200FB8DC008C7B3E /* MapLink.swift */; };
+		8827A479200FD088008C7B3E /* PlayerMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A478200FD088008C7B3E /* PlayerMapData.swift */; };
+		8827A47D200FDA5A008C7B3E /* MapGeneratorRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827A47C200FDA5A008C7B3E /* MapGeneratorRange.swift */; };
 		8865CE9B200CADE200B950A8 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9A200CADE200B950A8 /* BuildingNode.swift */; };
 		8865CE9D200CADEE00B950A8 /* BuildingProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */; };
 		8865CE9F200CAE5400B950A8 /* buildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8865CE9E200CAE5400B950A8 /* buildingData.swift */; };
@@ -88,6 +91,9 @@
 		8827A463200D2E37008C7B3E /* itemsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = itemsData.swift; sourceTree = "<group>"; };
 		8827A467200DE83E008C7B3E /* Herculanum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Herculanum.ttf; sourceTree = "<group>"; };
 		8827A46D200F8D91008C7B3E /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		8827A470200FB8DC008C7B3E /* MapLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLink.swift; sourceTree = "<group>"; };
+		8827A478200FD088008C7B3E /* PlayerMapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerMapData.swift; sourceTree = "<group>"; };
+		8827A47C200FDA5A008C7B3E /* MapGeneratorRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGeneratorRange.swift; sourceTree = "<group>"; };
 		8865CE9A200CADE200B950A8 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		8865CE9C200CADEE00B950A8 /* BuildingProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingProperties.swift; sourceTree = "<group>"; };
 		8865CE9E200CAE5400B950A8 /* buildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildingData.swift; sourceTree = "<group>"; };
@@ -174,6 +180,22 @@
 				8827A46D200F8D91008C7B3E /* Utility.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		8827A46F200FB8CF008C7B3E /* MapLink */ = {
+			isa = PBXGroup;
+			children = (
+				8827A470200FB8DC008C7B3E /* MapLink.swift */,
+			);
+			name = MapLink;
+			sourceTree = "<group>";
+		};
+		8827A47A200FDA2D008C7B3E /* MapGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				8827A47C200FDA5A008C7B3E /* MapGeneratorRange.swift */,
+			);
+			name = MapGenerator;
 			sourceTree = "<group>";
 		};
 		8865CE99200CADD200B950A8 /* Building */ = {
@@ -274,6 +296,7 @@
 				88939191200BC09700663CF5 /* Player.swift */,
 				88939193200BC0A500663CF5 /* PlayerData.swift */,
 				8827A457200D029A008C7B3E /* PlayerResource.swift */,
+				8827A478200FD088008C7B3E /* PlayerMapData.swift */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -327,6 +350,7 @@
 				88DD2554200B9F070081BA1B /* MapCellularAutomata */,
 				88DD2559200BA0780081BA1B /* MapTile.swift */,
 				88DD255C200BA6250081BA1B /* MapTileProperties.swift */,
+				8827A46F200FB8CF008C7B3E /* MapLink */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -334,6 +358,7 @@
 		88DD2554200B9F070081BA1B /* MapCellularAutomata */ = {
 			isa = PBXGroup;
 			children = (
+				8827A47A200FDA2D008C7B3E /* MapGenerator */,
 				88DD2552200B9EFB0081BA1B /* MapCellularAutomata.swift */,
 				88DD2555200B9F5D0081BA1B /* MapCASettings.swift */,
 				88DD2557200B9F660081BA1B /* MapCAEvents.swift */,
@@ -480,6 +505,8 @@
 				88FBECA0200CD07F000EC9F0 /* creatureData.swift in Sources */,
 				8827A464200D2E37008C7B3E /* itemsData.swift in Sources */,
 				8827A458200D029A008C7B3E /* PlayerResource.swift in Sources */,
+				8827A471200FB8DC008C7B3E /* MapLink.swift in Sources */,
+				8827A47D200FDA5A008C7B3E /* MapGeneratorRange.swift in Sources */,
 				88DD254F200B9DB10081BA1B /* Map.swift in Sources */,
 				8865CEAD200CBC2800B950A8 /* Monster.swift in Sources */,
 				8865CEA4200CB2C500B950A8 /* BuildingAction.swift in Sources */,
@@ -487,6 +514,7 @@
 				8865CEA9200CBC1B00B950A8 /* Hero.swift in Sources */,
 				8865CEA7200CBC1500B950A8 /* Creature.swift in Sources */,
 				8827A46E200F8D91008C7B3E /* Utility.swift in Sources */,
+				8827A479200FD088008C7B3E /* PlayerMapData.swift in Sources */,
 				88DD254C200B9C920081BA1B /* SceneData.swift in Sources */,
 				88DD2551200B9E270081BA1B /* MapHeader.swift in Sources */,
 				88DD255D200BA6250081BA1B /* MapTileProperties.swift in Sources */,

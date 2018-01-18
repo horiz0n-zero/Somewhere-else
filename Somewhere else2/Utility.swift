@@ -24,3 +24,13 @@ func *(lhs: CGSize, rhs: CGSize) -> CGSize {
 func *(lhs: CGSize, rhs: CGFloat) -> CGSize {
     return CGSize(width: lhs.width * rhs, height: lhs.height * rhs)
 }
+
+func randomFrom(_ range: Int) -> Int {
+    return Int(arc4random_uniform(UInt32(range)))
+}
+
+func randomIn<T>(_ range: [T]) -> T {
+    let r = Int(arc4random_uniform(UInt32(range.count)))
+    
+    return range[r]
+}

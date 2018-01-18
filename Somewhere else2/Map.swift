@@ -14,6 +14,7 @@ struct Map {
     var grid: [[MapTileProperties]]
     var objects: [MapItem]!
     var buildings: [BuildingSave]?
+    var links: [MapLink]?
 
     init(size: Int, settings: MapCASettings, events: MapCAEvents) {
         self.header = MapHeader(size: size, settings: settings, events: events, type: .Explore)
@@ -25,12 +26,19 @@ struct Map {
         else {
             self.buildings = nil
         }
+        if events.requiredLinks != 0 {
+            self.links = [MapLink]()
+        }
+        else {
+            self.links = nil
+        }
     }
     
     init() {
         self.header = MapHeader(size: 0, settings: MapCASettings.zero, events: MapCAEvents.zero, type: .Explore)
         self.grid = [[MapTileProperties]]()
         self.buildings = nil
+        self.links = nil
     }
 }
 
@@ -49,7 +57,6 @@ extension Map {
         guard let file = FileHandle(forWritingAtPath: path) else {
             fatalError("Bad file to write")
         }
-        print("write at ", path)
         file.write(Data.init(bytesNoCopy: &map.header, count: MemoryLayout<MapHeader>.size, deallocator: .none))
         for var tiles in map.grid {
             let data = Data(bytesNoCopy: &tiles, count: map.header.row_size, deallocator: .none)
@@ -58,6 +65,12 @@ extension Map {
         if map.header.events.requiredBuildings != 0 && map.buildings != nil {
             for var build in map.buildings! {
                 let data = Data(bytesNoCopy: &build, count: MemoryLayout<BuildingSave>.size, deallocator: .none)
+                file.write(data)
+            }
+        }
+        if map.header.events.requiredLinks != 0 && map.links != nil {
+            for var link in map.links! {
+                let data = Data(bytesNoCopy: &link, count: MemoryLayout<MapLink>.size, deallocator: .none)
                 file.write(data)
             }
         }
@@ -71,13 +84,18 @@ extension Map {
         guard let file = FileHandle(forReadingAtPath: path) else {
             fatalError()
         }
-        print("read at ", path)
         let header = file.readData(ofLength: MemoryLayout<MapHeader>.size)
-        header.copyBytes(to: UnsafeMutableBufferPointer.init(start: &map.header, count: MemoryLayout<MapHeader>.size))
+        if header.copyBytes(to: UnsafeMutableBufferPointer.init(start: &map.header, count: MemoryLayout<MapHeader>.size))
+            != MemoryLayout<MapHeader>.size {
+            fatalError()
+        }
         for _ in 1...map.header.size {
             var row = Array(repeating: MapTileProperties.zero, count: map.header.size)
             let data = file.readData(ofLength: map.header.row_size)
-            data.copyBytes(to: UnsafeMutableBufferPointer.init(start: &row, count: map.header.row_size))
+            if data.copyBytes(to: UnsafeMutableBufferPointer.init(start: &row, count: map.header.row_size))
+                != map.header.row_size {
+                fatalError()
+            }
             map.grid.append(row)
         }
         if map.header.events.requiredBuildings != 0 {
@@ -88,8 +106,28 @@ extension Map {
             while i < map.header.events.requiredBuildings {
                 let data = file.readData(ofLength: MemoryLayout<BuildingSave>.size)
                 var save = BuildingSave.init(type: .totem, rarity: .common, x: 0, y: 0)
-                data.copyBytes(to: UnsafeMutableBufferPointer.init(start: &save, count: MemoryLayout<BuildingSave>.size))
+                if data.copyBytes(to: UnsafeMutableBufferPointer.init(start: &save, count: MemoryLayout<BuildingSave>.size))
+                    != MemoryLayout<BuildingSave>.size {
+                    fatalError()
+                }
                 map.buildings!.append(save)
+                i += 1
+            }
+        }
+        if map.header.events.requiredLinks != 0 {
+            if map.links == nil {
+                map.links = [MapLink]()
+            }
+            var i = 0
+            while i < map.header.events.requiredLinks {
+                let data = file.readData(ofLength: MemoryLayout<MapLink>.size)
+                print(MemoryLayout<MapLink>.size)
+                var save = MapLink.zero
+                if data.copyBytes(to: UnsafeMutableBufferPointer.init(start: &save, count: MemoryLayout<MapLink>.size))
+                    != MemoryLayout<MapLink>.size {
+                    fatalError()
+                }
+                map.links!.append(save)
                 i += 1
             }
         }

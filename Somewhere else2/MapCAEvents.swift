@@ -14,13 +14,19 @@ struct MapCAEvents {
     var requiredLinks: Int
     var requiredItems: Int
     let requiredTotal: Int
+    let range: MapCAGeneratorRange
     
-    init(buildings: Int, links: Int, items: Int) {
+    init(buildings: Int, links: Int, items: Int, range: MapCAGeneratorRange) {
         self.requiredBuildings = buildings
-        self.requiredLinks = links
+        self.requiredLinks = links + 1 // player entry
         self.requiredItems = items
+        self.range = range
         self.requiredTotal = buildings + links + items
     }
     
-    static let zero = MapCAEvents(buildings: 0, links: 0, items: 0)
+    static let zero = MapCAEvents(buildings: 0, links: 0, items: 0, range: MapCAGeneratorRange.init(usingRandomPreset: true))
+    
+    static func randomEvents() -> MapCAEvents {
+        return MapCAEvents(buildings: randomFrom(30), links: randomFrom(10), items: randomFrom(10), range: MapCAGeneratorRange.init(usingRandomPreset: true))
+    }
 }

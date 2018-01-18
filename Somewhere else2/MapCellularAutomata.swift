@@ -15,6 +15,7 @@ extension Map {
      let size = self.header.size - 2
         var table: [(x: Int, y: Int, priority: Int, pos: Int)] = Array(repeating: (0, 0, 0, 0), count: self.header.size * self.header.size)
         var index: Int = 0
+        var i: Int = 0
         
         for y in 1...size {
             for x in 1...size {
@@ -36,19 +37,41 @@ extension Map {
             return
         }
         func sortTable(a: (x: Int, y: Int, priority: Int, pos: Int), b: (x: Int, y: Int, priority: Int, pos: Int)) -> Bool {
-            return a.priority > b.priority || a.pos < b.pos
+            return a.pos > b.pos
         }
+        
         table.sort(by: sortTable)
+        //
+        // player spawn
+        let pos = table[i]
+        /* special case mod later*/
+        let entryLink = MapLink(x: pos.x, y: pos.y, settings: self.header.settings, events: self.header.events, size: self.header.size, name: "/home.map")
+        self.links!.append(entryLink)
+        self.grid[pos.y][pos.x].link = entryLink
+        i += 1
+        //
         if self.header.events.requiredBuildings != 0 && self.buildings != nil {
-            for i in 0...self.header.events.requiredBuildings - 1 {
-                let type = BuildingType(rawValue: Int(arc4random_uniform(2)))!
-                let build = BuildingSave(type: type, rarity: Rarities(rawValue: Int(arc4random_uniform(3)))!,
+            for _ in 0...self.header.events.requiredBuildings - 1 {
+                let type = randomIn(self.header.events.range.buildings)
+                print(type)
+                let build = BuildingSave(type: type, rarity: Probabilities.get3(),
                                         x: table[i].x, y: table[i].y)
-                
                 self.buildings!.append(build)
+                self.grid[table[i].y][table[i].x].type = 5//base
                 self.grid[table[i].y][table[i].x].building = build
+                i += 1
             }
         }
+        if self.header.events.requiredLinks != 0 && self.links != nil {
+            for _ in 1...self.header.events.requiredLinks - 1 {
+                let pos = table[i]
+                i += 1
+                let link = MapLink(x: pos.x, y: pos.y, settings: MapCASettings.randomSettings(),
+                                   events: MapCAEvents.randomEvents(), size: 100, name: <#T##String#>)
+            }
+            
+        }
+        
     }
     
 }
@@ -162,6 +185,9 @@ extension Map {
                         default:
                             break
                         }
+                    }
+                    if let link = self.grid[y][x].link {
+                        letter = "#"
                     }
                     
                     print(letter, separator: "", terminator: " ")

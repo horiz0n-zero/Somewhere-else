@@ -16,7 +16,7 @@ class BuildingNode: SKSpriteNode, BuildingProperties {
     var rarity: Rarities
     // <--
     static let BuildingsDetails = [
-        BuildingDetails.init(index: 0, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.9, 0.9, 0.7]),
+        BuildingDetails.init(index: 0, raritiesGet: Probabilities.get3, yplus: [60, 63, 63], scale: [0.9, 0.9, 0.7]),
         BuildingDetails.init(index: 1, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.6, 0.6, 0.6])
     ]
     
