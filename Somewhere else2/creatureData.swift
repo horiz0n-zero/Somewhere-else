@@ -32,6 +32,17 @@ struct CreatureProperties {
     
 }
 
+enum CreatureType: Int {
+    case trean = 0
+    case tromblon = 1
+    case troll = 2
+    case babyDragon = 3
+    case sorcier = 4
+    case helicopter = 5
+    case griffon = 6
+}
+
+
 struct creatureData {
     
     let properties: [CreatureProperties] = [
@@ -42,6 +53,24 @@ struct creatureData {
         CreatureProperties(name: "sorcier", folder: "fashi", level: 2, tex: [0, 5, 5]),
         CreatureProperties(name: "helicopter", folder: "helicopter", level: 2, tex: [5, 5, 5]),
         CreatureProperties(name: "griffon", folder: "griffin", level: 2, tex: [5, 7, 6])
+    ]
+    let images: [SKTexture] = [
+        SKTexture.init(imageNamed: "treedemon"),
+        SKTexture.init(imageNamed: "mad"),
+        SKTexture.init(imageNamed: "manh"),
+        SKTexture.init(imageNamed: "fairydragon"),
+        SKTexture.init(imageNamed: "fashi"),
+        SKTexture.init(imageNamed: "helicopter"),
+        SKTexture.init(imageNamed: "griffin")
+    ]
+    let imagesHead: [SKTexture] = [
+        SKTexture.init(imageNamed: "treedemon_s"),
+        SKTexture.init(imageNamed: "mad_s"),
+        SKTexture.init(imageNamed: "manh_s"),
+        SKTexture.init(imageNamed: "fairydragon_s"),
+        SKTexture.init(imageNamed: "fashi_s"),
+        SKTexture.init(imageNamed: "helicopter_s"),
+        SKTexture.init(imageNamed: "griffin_s")
     ]
     
     static func loadCreatureWithLevel(properties: inout CreatureProperties) -> [[[[SKTexture]]]] {

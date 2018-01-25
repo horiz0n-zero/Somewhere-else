@@ -20,14 +20,12 @@ class Scene: SKScene {
         self.data = data
         super.init(size: size)
         self.backgroundColor = UIColor.black
-        self.player = Player(texture: nil, color: UIColor.red, size: CGSize.init(width: 25, height: 25))
-        self.player.position = self.data.player.map.currentPosition
-        
+        self.player = Player(data: self.data, type: .babyDragon)
         self.addChild(self.player)
+        
         let cam = SKCameraNode()
         self.camera = cam
         self.addChild(cam)
-        self.player.zPosition = 100
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -39,10 +37,31 @@ class Scene: SKScene {
             return
         }
         self.player.position = t.location(in: self)
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 }
+
+extension Scene {
+    func loadHeadLayers() {
+        let head = HeadLayerViewController(nibName: "HeadLayerViewController", bundle: nil)
+
+        //self.data.controller?.addChildViewController(head)
+        self.data.controller!.present(head, animated: false, completion: {
+            head.loadCreature(texture: self.data.creature.imagesHead[CreatureType.babyDragon.rawValue], name: "bebe dragon")
+        })
+        print(head)
+        
+    }
+}
+
+
+
+
+
+
+
+
+

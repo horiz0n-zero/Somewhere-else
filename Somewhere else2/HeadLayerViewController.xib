@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Herculanum.ttf">
+            <string>Herculanum</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeadLayerViewController" customModule="Somewhere_else2" customModuleProvider="target">
+            <connections>
+                <outlet property="HeadCreatureImage" destination="Ln0-0l-B2a" id="H8s-gL-VsY"/>
+                <outlet property="headCreatureName" destination="WGx-KN-0Qj" id="5Rx-Dg-e5S"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="196" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headCreature" translatesAutoresizingMaskIntoConstraints="NO" id="X5t-CA-548">
+                    <rect key="frame" x="16" y="25" width="164" height="155"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sorcier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGx-KN-0Qj">
+                    <rect key="frame" x="31" y="139" width="135" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="135" id="Qz0-lz-VoM"/>
+                        <constraint firstAttribute="height" constant="22" id="fqL-v8-oo0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Herculanum" family="Herculanum" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fashi_s" translatesAutoresizingMaskIntoConstraints="NO" id="Ln0-0l-B2a">
+                    <rect key="frame" x="16" y="25" width="164" height="109"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="164" id="UbL-o5-dJk"/>
+                        <constraint firstAttribute="height" constant="109" id="okb-EV-uDo"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="X5t-CA-548" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="4VR-TW-wje"/>
+                <constraint firstItem="WGx-KN-0Qj" firstAttribute="top" secondItem="X5t-CA-548" secondAttribute="bottom" constant="-41" id="679-sY-Acj"/>
+                <constraint firstItem="Ln0-0l-B2a" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="EJH-YW-gFL"/>
+                <constraint firstAttribute="trailing" secondItem="X5t-CA-548" secondAttribute="trailing" constant="16" id="PQa-fD-V4S"/>
+                <constraint firstAttribute="bottom" secondItem="X5t-CA-548" secondAttribute="bottom" constant="20" id="XY6-Ce-c4U"/>
+                <constraint firstItem="X5t-CA-548" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="Z3g-oC-zLk"/>
+                <constraint firstItem="Ln0-0l-B2a" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="gnM-h8-r4P"/>
+                <constraint firstItem="WGx-KN-0Qj" firstAttribute="leading" secondItem="X5t-CA-548" secondAttribute="trailing" constant="-149" id="rPI-f1-MBe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="fashi_s" width="197" height="167"/>
+        <image name="headCreature" width="196" height="200"/>
+    </resources>
+</document>

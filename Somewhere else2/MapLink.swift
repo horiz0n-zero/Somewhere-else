@@ -9,12 +9,6 @@
 import Foundation
 import SpriteKit
 
-enum MapContext: Int {
-    case exploring = 0
-    case explored = 1
-    case house = 2
-}
-
 struct MapLink {
     
     var x: Int
@@ -22,7 +16,8 @@ struct MapLink {
     var settings: MapCASettings
     var events: MapCAEvents
     var size: Int
-    let name: String
+    let type: MapDrawType
+    let path: String?
     
     static func readMapHeader(path: String) -> MapHeader? {
         guard let file = FileHandle.init(forReadingAtPath: path) else {
@@ -38,15 +33,8 @@ struct MapLink {
         return header
     }
     
-    static func initFromPath(path: String) -> MapLink? {
-        guard let header = MapLink.readMapHeader(path: path) else {
-            return nil
-        }
-        let link = MapLink(x: 0, y: 0, settings: header.settings, events: header.events, size: header.size, name: "")
-        return link
-    }
-    static let zero = MapLink(x: 0, y: 0, settings: MapCASettings.zero, events: MapCAEvents.zero, size: 0, name: "")
-    
+    static let zero = MapLink(x: 0, y: 0, settings: MapCASettings.zero, events: MapCAEvents.zero,
+                              size: 0, type: .Explore, path: nil)
 }
 
 

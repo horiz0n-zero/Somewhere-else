@@ -17,7 +17,13 @@ class BuildingNode: SKSpriteNode, BuildingProperties {
     // <--
     static let BuildingsDetails = [
         BuildingDetails.init(index: 0, raritiesGet: Probabilities.get3, yplus: [60, 63, 63], scale: [0.9, 0.9, 0.7]),
-        BuildingDetails.init(index: 1, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.6, 0.6, 0.6])
+        BuildingDetails.init(index: 1, raritiesGet: Probabilities.get3, yplus: [63, 63, 63], scale: [0.6, 0.6, 0.6]),
+        BuildingDetails.init(index: 2, raritiesGet: Probabilities.get7,
+                             yplus: [60, 60, 60, 60, 60, 60, 60],
+                             scale: [0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7]),
+        BuildingDetails.init(index: 3, raritiesGet: Probabilities.get7,
+                             yplus: [60, 60, 60, 60, 60, 60, 60],
+                             scale: [0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7])
     ]
     
     fileprivate func commonInit() {

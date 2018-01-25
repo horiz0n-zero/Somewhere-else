@@ -15,6 +15,8 @@ enum Rarities: Int {
     case epic = 2
     case shiny = 3
     case legendary = 4
+    case extra1 = 5
+    case extra2 = 6
 }
 
 struct Probabilities {
@@ -86,6 +88,26 @@ struct Probabilities {
             }
         default:
             return .epic
+        }
+    }
+    
+    static func get7() -> Rarities {
+        let r = arc4random_uniform(100)
+        switch r {
+        case 0...5:
+            return .common
+        case 5...10:
+            return .rare
+        case 10...30:
+            return .epic
+        case 30...50:
+            return .shiny
+        case 50...80:
+            return .legendary
+        case 80...90:
+            return .extra1
+        default:
+            return .extra2
         }
     }
     

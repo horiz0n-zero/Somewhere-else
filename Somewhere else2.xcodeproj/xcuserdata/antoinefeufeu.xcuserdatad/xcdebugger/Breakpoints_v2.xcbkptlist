@@ -34,7 +34,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Somewhere else2/Map.swift"
@@ -50,7 +50,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Somewhere else2/Map.swift"
@@ -70,12 +70,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Somewhere else2/MapCellularAutomata.swift"
-            timestampString = "537913091.290772"
+            timestampString = "538075344.280552"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "applyCellularAutomataEvents()"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "applyCellularAutomataEvents(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

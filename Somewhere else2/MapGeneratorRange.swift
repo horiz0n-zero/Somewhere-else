@@ -45,7 +45,8 @@ struct MapCAGeneratorRange {
     
     init(usingRandomPreset: Bool) {
         if usingRandomPreset == true {
-            self = MapCAGeneratorRange.preset[Int(arc4random_uniform(UInt32(MapCAGeneratorRange.preset.count)))]
+            //self = MapCAGeneratorRange.preset[Int(arc4random_uniform(UInt32(MapCAGeneratorRange.preset.count)))]
+            self = MapCAGeneratorRange(buildings: [.cristalRed, .cristalBlue, .totem, .chest], creatures: [], heros: [], spirit: [], monster: [])
         }
         else {
             self.buildings = [BuildingType]()

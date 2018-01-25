@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 struct BuildingDetails {
-    let index: Int
+    let index: Int // BuildingType as! Int
     let raritiesGet: (() -> (Rarities))
     let yplus: [CGFloat]
     let scale: [CGFloat]
@@ -27,6 +27,8 @@ struct BuildingDetails {
 enum BuildingType: Int {
     case totem = 0
     case chest = 1
+    case cristalRed = 2
+    case cristalBlue = 3
 }
 
 protocol BuildingProperties {

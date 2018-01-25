@@ -13,8 +13,17 @@ struct PlayerMapData {
     var currentMapPath: String
     var currentMapRange: MapCAGeneratorRange
     var currentPosition: CGPoint
+    var currentMapIndex: Int
+    var currentLink: MapLink
     
     static let zero = PlayerMapData(currentMapPath: "/home.map",
                                     currentMapRange: MapCAGeneratorRange.init(usingRandomPreset: true),
-                                    currentPosition: CGPoint.zero)
+                                    currentPosition: CGPoint.zero, currentMapIndex: 0,
+                                    currentLink: MapLink.zero)
+    
+    mutating func newMapName() -> String {
+        let new = "/map\(self.currentMapIndex).map"
+        self.currentMapIndex += 1
+        return new
+    }
 }

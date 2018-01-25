@@ -18,7 +18,8 @@ struct ileData {
         SKTexture.init(imageNamed: "ile_c3"),
         SKTexture.init(imageNamed: "ile_c4"), // 4
         SKTexture.init(imageNamed: "ile_base"), // 5
-        SKTexture.init(imageNamed: "ile_link") // 6
+        SKTexture.init(imageNamed: "ile_link"), // 6
+        SKTexture.init(imageNamed: "ile_link_shadow") // 7
     ]
     let size = CGSize(width: 140, height: 207)
     let disize = CGSize(width: 69, height: 53)

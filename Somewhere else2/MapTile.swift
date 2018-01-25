@@ -23,14 +23,22 @@ class MapTile: SKSpriteNode {
         fatalError()
     }
     
-    func transformTo(mapLink link: MapLink, data: SceneData) {
-        switch link.context {
-        case .exploring, .explored:
+    func transformTo(link: MapLink, data: SceneData) {
+        switch link.type {
+        case .Explore:
             self.texture = data.ile.textures[6]
             self.position.y += data.ile.disize.height / 2
-        default:
-            break
+        case .Shadow:
+            let sprite = SKSpriteNode(texture: data.ile.textures[7])
+            sprite.position.y += data.ile.disize.height + 26
+            sprite.position.x = 5
+            sprite.xScale = -1
+            sprite.name = "shadow"
+            sprite.zPosition = 1
+            self.addChild(sprite)
+            self.texture = data.ile.textures[4]
         }
+        
     }
     
 }

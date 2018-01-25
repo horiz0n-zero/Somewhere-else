@@ -36,8 +36,10 @@ extension Scene {
                         tile.addChild(buildNode)
                         buildNode.zPosition = 1
                     }
-                    if let link = self.map.grid[y][x].link {
-                        tile.transformTo(mapLink: link, data: self.data)
+                    if var link = self.map.grid[y][x].link {
+                        link.x = Int(xposition)
+                        link.y = Int(yposition)
+                        tile.transformTo(link: link, data: self.data)
                     }
                     self.addChild(tile)
                 }

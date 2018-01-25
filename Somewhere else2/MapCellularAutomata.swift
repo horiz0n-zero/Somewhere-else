@@ -11,64 +11,57 @@ import SpriteKit
 
 extension Map {
     
-    mutating func applyCellularAutomataEvents() {
-     let size = self.header.size - 2
-        var table: [(x: Int, y: Int, priority: Int, pos: Int)] = Array(repeating: (0, 0, 0, 0), count: self.header.size * self.header.size)
-        var index: Int = 0
-        var i: Int = 0
+    mutating func applyCellularAutomataEvents(data: inout SceneData!) {
+        let size = self.header.size - 2
+        var table: [(x: Int, y: Int)] = []
+        
+        func pickInTable(table: inout [(x: Int, y: Int)]) -> (x: Int, y: Int) {
+            let r = randomFrom(table.count)
+            
+            return table.remove(at: r)
+        }
         
         for y in 1...size {
             for x in 1...size {
                 if self.grid[y][x].live == 1 {
-                    table[index].x = x
-                    table[index].y = y
-                    table[index].priority = self.grid[y + 1][x + 1].live + self.grid[y + 1][x].live + self.grid[y + 1][x - 1].live +
-                        self.grid[y][x + 1].live + self.grid[y][x].live + self.grid[y][x - 1].live +
-                        self.grid[y - 1][x + 1].live + self.grid[y - 1][x].live + self.grid[y - 1][x - 1].live
-                    table[index].pos = self.grid[y + 1][x + 1].type + self.grid[y + 1][x].type + self.grid[y + 1][x - 1].type +
-                        self.grid[y][x + 1].type + self.grid[y][x].type + self.grid[y][x - 1].type +
-                        self.grid[y - 1][x + 1].type + self.grid[y - 1][x].type + self.grid[y - 1][x - 1].type
-                    index += 1
+                    table.append((x: x, y: y))
                 }
             }
         }
-        if index < self.header.events.requiredTotal {
-            print(index, self.header.events.requiredTotal)
+        if table.count < self.header.events.requiredTotal {
             return
         }
-        func sortTable(a: (x: Int, y: Int, priority: Int, pos: Int), b: (x: Int, y: Int, priority: Int, pos: Int)) -> Bool {
-            return a.pos > b.pos
-        }
-        
-        table.sort(by: sortTable)
         //
         // player spawn
-        let pos = table[i]
-        /* special case mod later*/
-        let entryLink = MapLink(x: pos.x, y: pos.y, settings: self.header.settings, events: self.header.events, size: self.header.size, name: "/home.map")
+        let point = pickInTable(table: &table)
+        let entryLink = MapLink(x: point.x, y: point.y, settings: self.header.settings, events: self.header.events, size: self.header.size,
+                                type: .Explore, path: "/home.map")
         self.links!.append(entryLink)
-        self.grid[pos.y][pos.x].link = entryLink
-        i += 1
+        data.player.map.currentLink = entryLink
+        self.grid[point.y][point.x].link = entryLink
         //
         if self.header.events.requiredBuildings != 0 && self.buildings != nil {
             for _ in 0...self.header.events.requiredBuildings - 1 {
                 let type = randomIn(self.header.events.range.buildings)
-                print(type)
-                let build = BuildingSave(type: type, rarity: Probabilities.get3(),
-                                        x: table[i].x, y: table[i].y)
+                let point = pickInTable(table: &table)
+                let build = BuildingSave(type: type, rarity: BuildingNode.BuildingsDetails[type.rawValue].raritiesGet(),
+                                        x: point.x, y: point.y)
                 self.buildings!.append(build)
-                self.grid[table[i].y][table[i].x].type = 5//base
-                self.grid[table[i].y][table[i].x].building = build
-                i += 1
+                if build.type != BuildingType.cristalRed && build.type != BuildingType.cristalBlue {
+                    self.grid[point.y][point.x].type = 5//base
+                }
+                self.grid[point.y][point.x].building = build
             }
         }
         if self.header.events.requiredLinks != 0 && self.links != nil {
             for _ in 1...self.header.events.requiredLinks - 1 {
-                let pos = table[i]
-                i += 1
-                let link = MapLink(x: pos.x, y: pos.y, settings: MapCASettings.randomSettings(),
-                                   events: MapCAEvents.randomEvents(), size: 100, name: <#T##String#>)
+                let point = pickInTable(table: &table)
+                let link = MapLink(x: point.x, y: point.y, settings: MapCASettings.randomSettings(), events: MapCAEvents.randomEvents(),
+                                   size: 100, type: randomIn([.Explore, .Shadow]), path: data.player.map.newMapName())
+                self.links!.append(link)
+                self.grid[point.y][point.x].link = link
             }
+            
             
         }
         
@@ -182,11 +175,13 @@ extension Map {
                             letter = "C"
                         case .totem:
                             letter = "T"
-                        default:
-                            break
+                        case .cristalRed:
+                            letter = "R"
+                        case .cristalBlue:
+                            letter = "B"
                         }
                     }
-                    if let link = self.grid[y][x].link {
+                    if let _ = self.grid[y][x].link {
                         letter = "#"
                     }
                     

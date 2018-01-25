@@ -11,6 +11,7 @@ import SpriteKit
 
 enum MapDrawType: Int {
     case Explore = 0
+    case Shadow = 1
 }
 
 struct MapHeader {
